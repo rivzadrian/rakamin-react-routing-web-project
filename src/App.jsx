@@ -2,13 +2,16 @@
 
 import Login from './pages/login'
 import Register from './pages/register'
+import AppRoutes from './routes/AppRoutes'
+
 
 
 function App() {
 
   return (
-    <Login />
+    // <Login />
     // <Register />
+    <AppRoutes />
   )
 }
 

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Register() {
   const [name, setName] = useState("");
@@ -49,9 +50,9 @@ export default function Register() {
 
         <p className="text-center">
           Already have an account?  
-          <a href="/" className="text-orange-500">
+          <Link to="/login" className="text-orange-500">
              Login
-          </a>
+          </Link>
         </p>
       </form>
     </div>
