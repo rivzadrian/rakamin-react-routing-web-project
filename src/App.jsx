@@ -7,8 +7,8 @@ import Register from './pages/register'
 function App() {
 
   return (
-    // <Login />
-    <Register />
+    <Login />
+    // <Register />
   )
 }
 
