@@ -8,6 +8,7 @@ import Home from "../pages/Home";
 import useAuthStore from "../stores/authStore";
 import ProtectedRoute from "../components/ProtectedRoute";
 import Profile from "../pages/Profile";
+import ProjectDetail from "../pages/ProjectDetail";
 
 export default function AppRoutes() {
   const user = useAuthStore((state) => state.user);
@@ -28,6 +29,7 @@ export default function AppRoutes() {
           }
         >
           <Route path="/" element={<Home />} />
+          <Route path="/projects/:projectId" element={<ProjectDetail />} />
           <Route path="/profile" element={<Profile />} />
         </Route>
       </Routes>
