@@ -7,6 +7,7 @@ import Register from "../pages/register";
 import Home from "../pages/Home";
 import useAuthStore from "../stores/authStore";
 import ProtectedRoute from "../components/ProtectedRoute";
+import Profile from "../pages/Profile";
 
 export default function AppRoutes() {
   const user = useAuthStore((state) => state.user);
@@ -19,11 +20,15 @@ export default function AppRoutes() {
         <Route path="/register" element={<Register />}></Route>
 
         {/* Protected routes */}
-        <Route element={
+        <Route
+          element={
             <ProtectedRoute>
-            <Layout /> 
-            </ProtectedRoute>}>
+              <Layout />
+            </ProtectedRoute>
+          }
+        >
           <Route path="/" element={<Home />} />
+          <Route path="/profile" element={<Profile />} />
         </Route>
       </Routes>
     </BrowserRouter>
