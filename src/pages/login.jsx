@@ -1,12 +1,35 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
+import api from "../utils/api";
+import useAuthStore from "../stores/authStore";
+
 export default function Login() {
+
+  const navigate = useNavigate()
+  const {setToken, setUser} = useAuthStore((state) => state)
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  // const user = useAuthStore((state)=>state.user)
+  // console.log("ini login",user);
+
   const handleLogin = async (e) => {
     e.preventDefault();
+    try {
+     const response =  await api.post("/api/auth/login", {
+        email: email,
+        password: password
+      }) 
+      // console.log(response);
+      const { accessToken, user} = response.data // harus sesuai dengan key pada response
+      setToken(accessToken)
+      setUser(user)
+      navigate("/")
+    } catch (error) {
+      console.error("Login failed", error.response?.data?.message || error.message);
+    }
   };
 
   return (
